@@ -27,7 +27,11 @@ async def runner():
   }))
 
   while True:
-   data = json.loads(await ws.recv())
+   try:
+       data = json.loads(await ws.recv())
+   except Exception as e:
+       print(str(e))
+       continue
    print(data)
    if data['type'] == 'channel':
     if data['body']['type'] == 'mention':
