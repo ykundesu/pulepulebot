@@ -1,0 +1,29 @@
+name: SplatoonSokuhou CheckUpdate
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+    - cron: '0 6 * * *'
+    - cron: '0 12 * * *'
+    - cron: '0 18 * * *'
+  workflow_dispatch:
+
+jobs:
+  build:
+    env:
+      PULEPULETOKEN: ${{ secrets.TOKEN }}
+    runs-on: ubuntu-latest
+    name: PuleBOT
+    steps:
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install requirements
+        run: |
+          pip install -r requirements.txt
+      - name: Run Pulepule
+        run: |
+          python3 main.py
