@@ -32,7 +32,10 @@ async def runner():
    if data['type'] == 'channel':
     if data['body']['type'] == 'mention':
      note = data['body']['body']
-     await on_mention(note)
+     try:
+       await on_mention(note)
+     except Exception as e:
+         print(str(e))
 pules = ["ぷぇ","ぷぇ","ぷぇ","ぷぇ","ぷぅ","みぃ","ぷぅ","みぃ","！","？","ぷみ","ぷぅい","～"]
 jps = ["やあ！","元気？","頑張ろう！",":send_money::is_all_scam:！","考えるな、感じろ！","こんにちは！","いえい！"]
 async def on_mention(note):
