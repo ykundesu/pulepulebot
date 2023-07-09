@@ -4,8 +4,9 @@ import websockets
 from misskey import Misskey
 import hashlib
 import random
+import os
 print("library loaded")
-TOKEN=ps.environ.get("PULEPULETOKEN",None)
+TOKEN=os.environ.get("PULEPULETOKEN",None)
 if TOKEN == None:
     print("トークンなし")
     a()
@@ -40,7 +41,7 @@ async def on_mention(note):
         if targetnote is not None:
             notetext = targetnote["text"]
             Mode = "ToPule"
-            if len(notetext.replace("ぷぇ","").replace("ぷぅ","").replace("みぃ","").replace("ぷぅえ","").replace("ぷぅい","").replace("ぷみ").replace("～","").replace("~","").replace("？","").replace("?","").replace("！","").replace("!","").replace(" ","").replace("\n","").replace("\r","")) <= 0:
+            if len(notetext.replace("ぷぇ","").replace("ぷぅ","").replace("みぃ","").replace("ぷぅえ","").replace("ぷぅい","").replace("ぷみ","").replace("～","").replace("~","").replace("？","").replace("?","").replace("！","").replace("!","").replace(" ","").replace("\n","").replace("\r","")) <= 0:
                 Mode = "ToJP"
             hashedtext = hashlib.md5(notetext.encode()).hexdigest()
             random.seed(hashedtext)
