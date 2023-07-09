@@ -44,7 +44,7 @@ async def on_mention(note):
         if targetnote is not None:
             notetext = targetnote["text"]
             Mode = "ToPule"
-            if len(notetext.replace("ぷぇ","").replace("ぷぅ","").replace("ぷえぇ","").replace("ぷえ","").replace("みぃ","").replace("ぷぅえ","").replace("ぷぃ","").replace("ぷぅい","").replace("ぷみ","").replace("～","").replace("~","").replace("？","").replace("?","").replace("！","").replace("!","").replace(" ","").replace("　","").replace("\n","").replace("\r","")) <= 0:
+            if len(notetext.replace("ぷぇ","").replace("ぷえぇ","").replace("ぷえ","").replace("みぃ","").replace("ぷぅえ","").replace("ぷぃ","").replace("ぷぅい","").replace("ぷみ","").replace("～","").replace("ぷぅ","").replace("~","").replace("？","").replace("?","").replace("！","").replace("!","").replace(" ","").replace("　","").replace("\n","").replace("\r","")) <= 0:
                 Mode = "ToJP"
             hashedtext = hashlib.md5(notetext.encode()).hexdigest()
             random.seed(hashedtext)
