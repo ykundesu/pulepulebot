@@ -27,19 +27,19 @@ async def runner():
   }))
 
   while True:
-   try:
-       data = json.loads(await ws.recv())
-   except Exception as e:
-       print(str(e))
-       continue
+   #try:
+   data = json.loads(await ws.recv())
+   #except Exception as e:
+   #    print(str(e))
+   #    continue
    print(data)
    if data['type'] == 'channel':
     if data['body']['type'] == 'mention':
      note = data['body']['body']
-     try:
-       await on_mention(note)
-     except Exception as e:
-         print(str(e))
+     #try:
+     await on_mention(note)
+     #except Exception as e:
+     #    print(str(e))
 pules = ["ぷぇ","ぷぇ","ぷぇ","ぷぇ","ぷぅ","みぃ","ぷぅ","みぃ","！","？","ぷみ","ぷぅい","～"]
 jps = ["やあ！","元気？","頑張ろう！",":send_money::is_all_scam:！","考えるな、感じろ！","こんにちは！","いえい！"]
 async def on_mention(note):
