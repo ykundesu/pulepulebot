@@ -11,6 +11,7 @@ if TOKEN == None:
     print("トークンなし")
     a()
 msk = Misskey('misskey.io', i=TOKEN)
+lpbtoken = Misskey('misskey.io', i=os.environ.get("LPBTOKEN",None))
 MY_ID = msk.i()['id']
 
 pules = ["ぷぇ","ぷぇ","ぷぇ","ぷぇ","ぷぅ","みぃ","ぷぅ","みぃ","！","？","ぷみ","ぷぅい","～"]
@@ -21,3 +22,4 @@ for i in range(pulecount):
     text += random.choice(pules)
 print(text)
 msk.notes_create(text=text)
+lpbtoken.notes_create(text=":send_money::is_all_scam:")

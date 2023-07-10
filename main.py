@@ -6,11 +6,15 @@ import hashlib
 import random
 import os
 print("library loaded")
-TOKEN=os.environ.get("PULEPULETOKEN",None)
-if TOKEN == None:
-    print("トークンなし")
-    a()
-msk = Misskey('misskey.io', i=TOKEN)
+def login(evname):
+    token = os.environ.get(evname,None)
+    if token == None:
+        print("トークンなし:"+evname)
+        a()
+    return Misskey('misskey.io', i=token),token
+msk, TOKEN = login("PULEPULETOKEN")
+letterpack = login("LPBTOKEN")[0]
+allscam = login("LASBTOKEN")[0]
 MY_ID = msk.i()['id']
 WS_URL='wss://misskey.io/streaming?i='+TOKEN
 print("login ended")
@@ -32,7 +36,6 @@ async def runner():
    #except Exception as e:
    #    print(str(e))
    #    continue
-   print(data)
    if data['type'] == 'channel':
     if data['body']['type'] == 'note':
      note = data['body']['body']
@@ -68,4 +71,17 @@ async def on_mention(note):
                 print("リプライ先のノートを日本語に翻訳しました！\n\n"+text)
                 msk.notes_create(text="リプライ先のノートを日本語に翻訳しました！\n\n"+text, reply_id=note["id"])
                 pass
+ try:
+ #print(note)
+  if note.get("text"):
+  if ":send_money:" in note.get("text"):
+     letterpack.notes_reactions_create(note.get("id"),":send_money:")
+     letterpack.notes_create(renote_id=note.get("id"),visibility="home")
+     print("レターパックで現金送れ")
+     if ":is_all_scam:" in note.get("text"):
+         allscam.notes_reactions_create(note.get("id"),":is_all_scam:")
+         allscam.notes_create(renote_id=note.get("id"),visibility="home")
+         print("はすべて詐欺です")
+ except Exception as e:
+     print(str(e))
 asyncio.get_event_loop().run_until_complete(runner())
