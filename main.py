@@ -14,7 +14,7 @@ msk = Misskey('misskey.io', i=TOKEN)
 MY_ID = msk.i()['id']
 WS_URL='wss://misskey.io/streaming?i='+TOKEN
 print("login ended")
-random.seed(hashlib.md5("こんにちは。マジで楽しみ！".encode()).hexdigest())
+#random.seed(hashlib.md5("こんにちは。マジで楽しみ！".encode()).hexdigest())
 
 async def runner():
  async with websockets.connect(WS_URL) as ws:
@@ -22,7 +22,7 @@ async def runner():
    "type": "connect",
    "body": {
      "channel": "main",
-     "id": "test"
+     "id": "pulepulebot"+str(random.random())
    }
   }))
 
