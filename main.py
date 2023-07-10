@@ -8,7 +8,7 @@ import os
 print("library loaded")
 def login(evname):
     token = os.environ.get(evname,None)
-    peinr(evname+":"+token+":a")
+    print(evname+":"+token+":a")
     if token == None:
         print("トークンなし:"+evname)
         a()
