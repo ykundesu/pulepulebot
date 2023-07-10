@@ -21,7 +21,7 @@ async def runner():
   await ws.send(json.dumps({
    "type": "connect",
    "body": {
-     "channel": "main",
+     "channel": "globalTimeline",
      "id": "pulepulebot"+str(random.random())
    }
   }))
@@ -34,7 +34,7 @@ async def runner():
    #    continue
    print(data)
    if data['type'] == 'channel':
-    if data['body']['type'] == 'mention':
+    if data['body']['type'] == 'note':
      note = data['body']['body']
      #try:
      await on_mention(note)
@@ -43,8 +43,8 @@ async def runner():
 pules = ["ぷぇ","ぷぇ","ぷぇ","ぷぇ","ぷぅ","みぃ","ぷぅ","みぃ","！","？","ぷみ","ぷぅい","～"]
 jps = ["やあ！","元気？","頑張ろう！",":send_money::is_all_scam:！","考えるな、感じろ！","こんにちは！","いえい！"]
 async def on_mention(note):
-   if "reply" in note:
-    if note["reply"] is not None:
+ if note.get('mentions') and MY_ID in note['mentions']:
+  if note.get("reply"):
         targetnote = note["reply"]
         if targetnote is not None:
             notetext = targetnote["text"]
