@@ -8,16 +8,8 @@ import os
 print("library loaded")
 def login(evname):
     token = os.environ.get(evname,None)
-    print("ーーー")
-    print(token[0])
-    print(token[1])
-    print(token[2])
-    print(token[3])
-    print(token[4])
-    print(token[5])
-    print(token[6])
-    print(token[32])
-    print("--------")
+    if len(token) > 32:
+        token = token[:31]
     if token == None:
         print("トークンなし:"+evname)
         a()
