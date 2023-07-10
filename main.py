@@ -8,7 +8,16 @@ import os
 print("library loaded")
 def login(evname):
     token = os.environ.get(evname,None)
-    print(evname+":"+token+":"+token.replace("*","")+":"+str(len(token))+":a")
+    print("ーーー")
+    print(token[0])
+    print(token[1])
+    print(token[2])
+    print(token[3])
+    print(token[4])
+    print(token[5])
+    print(token[6])
+    print(token[32])
+    print("--------")
     if token == None:
         print("トークンなし:"+evname)
         a()
