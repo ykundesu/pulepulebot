@@ -9,7 +9,10 @@ print("library loaded")
 def login(evname):
     token = os.environ.get(evname,None)
     if len(token) > 32:
-        token = token[:31]
+        token = token[:32]
+        print(token[0])
+        print(token[31])
+    print(token)
     if token == None:
         print("トークンなし:"+evname)
         a()
