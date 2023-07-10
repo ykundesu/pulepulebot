@@ -43,6 +43,7 @@ async def runner():
 pules = ["ぷぇ","ぷぇ","ぷぇ","ぷぇ","ぷぅ","みぃ","ぷぅ","みぃ","！","？","ぷみ","ぷぅい","～"]
 jps = ["やあ！","元気？","頑張ろう！",":send_money::is_all_scam:！","考えるな、感じろ！","こんにちは！","いえい！"]
 async def on_mention(note):
+   if "reply" in note:
     if note["reply"] is not None:
         targetnote = note["reply"]
         if targetnote is not None:
