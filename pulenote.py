@@ -10,8 +10,13 @@ TOKEN=os.environ.get("PULEPULETOKEN",None)
 if TOKEN == None:
     print("トークンなし")
     a()
+if len(TOKEN) > 32:
+    TOKEN = TOKEN[:32]
 msk = Misskey('misskey.io', i=TOKEN)
-lpbtoken = Misskey('misskey.io', i=os.environ.get("LPBTOKEN",None))
+LPBTOKEN = os.environ.get("LPBTOKEN",None)
+if len(LPBTOKEN) > 32:
+    LPBTOKEN = LPBTOKEN[:32]
+lpbtoken = Misskey('misskey.io', i=LPBTOKEN)
 MY_ID = msk.i()['id']
 
 pules = ["ぷぇ","ぷぇ","ぷぇ","ぷぇ","ぷぅ","みぃ","ぷぅ","みぃ","！","？","ぷみ","ぷぅい","～"]
