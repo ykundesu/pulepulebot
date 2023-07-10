@@ -44,10 +44,10 @@ async def runner():
    if data['type'] == 'channel':
     if data['body']['type'] == 'note':
      note = data['body']['body']
-     #try:
-     await on_mention(note)
-     #except Exception as e:
-     #    print(str(e))
+     try:
+        await on_mention(note)
+     except Exception as e:
+         print(str(e))
 pules = ["ぷぇ","ぷぇ","ぷぇ","ぷぇ","ぷぅ","みぃ","ぷぅ","みぃ","！","？","ぷみ","ぷぅい","～"]
 jps = ["やあ！","元気？","頑張ろう！",":send_money::is_all_scam:！","考えるな、感じろ！","こんにちは！","いえい！"]
 async def on_mention(note):
@@ -74,7 +74,10 @@ async def on_mention(note):
                 for i in range(pulecount):
                     text += random.choice(jps)
                 print("リプライ先のノートを日本語に翻訳しました！\n\n"+text)
-                msk.notes_create(text="リプライ先のノートを日本語に翻訳しました！\n\n"+text, reply_id=note["id"])
+                try:
+                 msk.notes_create(text="リプライ先のノートを日本語に翻訳しました！\n\n"+text, reply_id=note["id"])
+                except Exception as e:
+                     print❨str(e))
                 pass
  try:
  #print(note)
