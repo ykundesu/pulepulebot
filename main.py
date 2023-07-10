@@ -77,7 +77,7 @@ async def on_mention(note):
                 try:
                  msk.notes_create(text="リプライ先のノートを日本語に翻訳しました！\n\n"+text, reply_id=note["id"])
                 except Exception as e:
-                     print❨str(e))
+                     print(str(e))
                 pass
  try:
  #print(note)
