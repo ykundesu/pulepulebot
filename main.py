@@ -74,7 +74,7 @@ async def on_mention(note):
  try:
  #print(note)
   if note.get("text"):
-  if ":send_money:" in note.get("text"):
+   if ":send_money:" in note.get("text"):
      letterpack.notes_reactions_create(note.get("id"),":send_money:")
      letterpack.notes_create(renote_id=note.get("id"),visibility="home")
      print("レターパックで現金送れ")
