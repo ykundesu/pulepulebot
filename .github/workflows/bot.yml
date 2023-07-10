@@ -11,7 +11,9 @@ on:
 jobs:
   build:
     env:
-      PULEPULETOKEN: ${{ secrets.TOKEN }}
+      PULEPULETOKEN: ${{ secrets.TOKEN }},
+      LPBTOKEN: ${{ secrets.LPBTOKEN }},
+      LASBTOKEN: ${{ secrets.LASBTOKEN }}
     runs-on: ubuntu-latest
     name: PuleBOT
     steps:
