@@ -37,7 +37,7 @@ async def runner():
 
   while True:
    try:
-   data = json.loads(await ws.recv())
+       data = json.loads(await ws.recv())
    except websockets.exceptions.connectionclosederror as e:
        print(str(e))
        await ws.send(json.dumps({
