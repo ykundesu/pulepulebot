@@ -31,16 +31,29 @@ async def runner():
    "type": "connect",
    "body": {
      "channel": "globalTimeline",
-     "id": "pulepulebot"+str(random.random())
+     "id": "pulepulebot"
    }
   }))
 
   while True:
-   #try:
+   try:
    data = json.loads(await ws.recv())
-   #except Exception as e:
-   #    print(str(e))
-   #    continue
+   except websockets.exceptions.connectionclosederror as e:
+       print(str(e))
+       await ws.send(json.dumps({
+           "type": "disconnect",
+           "body": {
+               "id": "pulepulebot"
+           }
+       }))
+       await ws.send(json.dumps({
+           "type": "connect",
+           "body": {
+           "channel": "globalTimeline",
+           "id": "pulepulebot"
+           }
+       }))
+       continue
    if data['type'] == 'channel':
     if data['body']['type'] == 'note':
      note = data['body']['body']
