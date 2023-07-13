@@ -40,19 +40,7 @@ async def runner():
        data = json.loads(await ws.recv())
    except websockets.exceptions.ConnectionClosedError as e:
        print(str(e))
-       await ws.send(json.dumps({
-           "type": "disconnect",
-           "body": {
-               "id": "pulepulebot"
-           }
-       }))
-       await ws.send(json.dumps({
-           "type": "connect",
-           "body": {
-           "channel": "globalTimeline",
-           "id": "pulepulebot"
-           }
-       }))
+       await runner()    
        continue
    if data['type'] == 'channel':
     if data['body']['type'] == 'note':
