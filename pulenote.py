@@ -22,7 +22,7 @@ MY_ID = msk.i()['id']
 
 pules = ["ぷぇ","ぷぇ","ぷぇ","ぷぇ","ぷぅ","みぃ","ぷぅ","みぃ","！","？","ぷみ","ぷぅい","～"]
 jps = ["やあ！","元気？","頑張ろう！",":send_money::is_all_scam:！","考えるな、感じろ！","こんにちは！","いえい！"]
-hansins = [":334:",":hansin:","なんでや阪神関係ないやろ！"]
+hansins = [":334:",":hanshin:","なんでや阪神関係ないやろ！"]
 pulecount = random.choice(range(5,30))
 text = ""
 for i in range(pulecount):
