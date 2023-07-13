@@ -17,10 +17,12 @@ LPBTOKEN = os.environ.get("LPBTOKEN",None)
 if len(LPBTOKEN) > 32:
     LPBTOKEN = LPBTOKEN[:32]
 lpbtoken = Misskey('misskey.io', i=LPBTOKEN)
+hansin = Misskey("misskey.io",i=os.environ.get("HANSINTOKEN",None))
 MY_ID = msk.i()['id']
 
 pules = ["ぷぇ","ぷぇ","ぷぇ","ぷぇ","ぷぅ","みぃ","ぷぅ","みぃ","！","？","ぷみ","ぷぅい","～"]
 jps = ["やあ！","元気？","頑張ろう！",":send_money::is_all_scam:！","考えるな、感じろ！","こんにちは！","いえい！"]
+hansins = [":334:",":hansin:","なんでや阪神関係ないやろ！"]
 pulecount = random.choice(range(5,30))
 text = ""
 for i in range(pulecount):
@@ -28,3 +30,4 @@ for i in range(pulecount):
 print(text)
 msk.notes_create(text=text)
 lpbtoken.notes_create(text=":send_money::is_all_scam:")
+hansin.notes_create(text=random.choice(hansins))
