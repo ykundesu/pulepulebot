@@ -20,6 +20,7 @@ def login(evname):
 msk, TOKEN = login("PULEPULETOKEN")
 letterpack = login("LPBTOKEN")[0]
 allscam = login("LASBTOKEN")[0]
+hansin = login("HANSINTOKEN")[0]
 MY_ID = msk.i()['id']
 WS_URL='wss://misskey.io/streaming?i='+TOKEN
 print("login ended")
@@ -91,6 +92,9 @@ async def on_mention(note):
          allscam.notes_reactions_create(note.get("id"),":is_all_scam:")
          allscam.notes_create(renote_id=note.get("id"),visibility="home")
          print("はすべて詐欺です")
+   if "334" in note.get("text").replace("-","") or "hansin" in note.get("text").replace("-",""):
+     hansin.notes_reactions_create(note.get("id"),random.choice([":hansin:",":334:"]))
+     hansin.notes_create(renote_id=note.get("id"),visibility="home")
  except Exception as e:
      print(str(e))
 asyncio.get_event_loop().run_until_complete(runner())
