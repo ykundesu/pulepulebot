@@ -14,9 +14,11 @@ jobs:
 
     env:
 
-      PULEPULETOKEN: ${{ secrets.TOKEN }},
-      LPBTOKEN: ${{ secrets.LPBTOKEN }},
+      PULEPULETOKEN: ${{ secrets.TOKEN }}
+      LPBTOKEN: ${{ secrets.LPBTOKEN }}
       LASBTOKEN: ${{ secrets.LASBTOKEN }}
+      HANSINTOKEN: ${{ secrets.HANSINTOKEN }}
+
 
     runs-on: ubuntu-latest
 
