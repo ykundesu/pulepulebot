@@ -31,7 +31,7 @@ async def runner():
   await ws.send(json.dumps({
    "type": "connect",
    "body": {
-     "channel": "globalTimeline",
+     "channel": "localTimeline",
      "id": "pulepulebot"
    }
   }))
