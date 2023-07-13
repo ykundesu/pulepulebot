@@ -93,7 +93,7 @@ async def on_mention(note):
          allscam.notes_create(renote_id=note.get("id"),visibility="home")
          print("はすべて詐欺です")
    if "334" in note.get("text").replace("-","") or "hansin" in note.get("text").replace("-",""):
-     hansin.notes_reactions_create(note.get("id"),random.choice([":hansin:",":334:"]))
+     hansin.notes_reactions_create(note.get("id"),random.choice([":hanshin:",":334:"]))
      hansin.notes_create(renote_id=note.get("id"),visibility="home")
  except Exception as e:
      print(str(e))
